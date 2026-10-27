@@ -211,15 +211,6 @@
     .fine { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
     @media (max-width: 860px) { .stylists-panel { grid-template-columns: 1fr; } }
 
-    /* Testers */
-    .testers { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
-    .needs { list-style: none; counter-reset: n; display: grid; gap: .9rem; }
-    .needs li { counter-increment: n; display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 1.2rem; padding: 1.1rem 1.2rem; }
-    .needs li::before { content: counter(n); width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; background: var(--mint); color: var(--forest); font: 600 1rem var(--display); }
-    .needs b { display: block; font-weight: 600; }
-    .needs span { color: var(--muted); font-size: .97rem; }
-    @media (max-width: 860px) { .testers { grid-template-columns: 1fr; } }
-
     /* Closing */
     .closing { background: var(--ink); color: #fff; border-radius: 2rem; padding: clamp(2.5rem, 6vw, 5rem); text-align: center; position: relative; overflow: hidden; }
     .closing::before { content: ""; position: absolute; inset: -40%; background: conic-gradient(from 0deg, transparent 0 70%, rgba(209,155,23,.18) 80%, transparent 90%); animation: spin 14s linear infinite; }
@@ -261,8 +252,8 @@
       </a>
       <ul class="nav-links">
         <li><a href="#how">How it works</a></li>
+        <li><a href="#trust">Safety</a></li>
         <li><a href="#stylists">For stylists</a></li>
-        <li><a href="#testers">Test the app</a></li>
         <li><a class="btn btn-primary" href="https://instagram.com/hairgo_za" target="_blank" rel="noopener">Follow us</a></li>
       </ul>
     </div>
@@ -390,24 +381,6 @@
       </div>
     </section>
 
-    <section class="section" id="testers" style="padding-top:0">
-      <div class="wrap testers">
-        <div class="reveal">
-          <h2>Got an Android phone? Help us launch.</h2>
-          <p class="lead">Before a new app can go live, Google needs real people to test it for 14 days. Testing is unpaid. You get first access and a real say in how HairGo works.</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="https://ig.me/m/hairgo_za" target="_blank" rel="noopener"><span class="dot"></span>Message us TESTER</a>
-            <a class="btn btn-quiet" href="mailto:support@hairgohome.co.za?subject=I%27d%20like%20to%20test%20HairGo">Email us instead</a>
-          </div>
-        </div>
-        <ol class="needs">
-          <li class="reveal"><div><b>Send us your Gmail address</b><span>The test runs through the Google Play Store.</span></div></li>
-          <li class="reveal" style="--d:.12s"><div><b>Install HairGo from our test link</b><span>Free, and takes a minute.</span></div></li>
-          <li class="reveal" style="--d:.24s"><div><b>Keep it for 14 days</b><span>Try it out and tell us what works and what breaks.</span></div></li>
-        </ol>
-      </div>
-    </section>
-
     <section class="section" id="contact" style="padding-top:0">
       <div class="wrap">
         <div class="closing reveal">
@@ -432,7 +405,6 @@
         <ul class="foot-links">
           <li><a href="#how">How it works</a></li>
           <li><a href="#stylists">For stylists</a></li>
-          <li><a href="#testers">Test the app</a></li>
           <li><a href="https://instagram.com/hairgo_za" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="terms-of-service.html">Terms of Service</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
