@@ -48,7 +48,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: October 2026</p>
+<p class="updated">Last updated: November 2026</p>
 
 <p><strong>HAIRGO (PTY) LTD</strong> (CIPC registration number 2026/762822/07), operating as <strong>HairGo</strong> ("HairGo," "we," "us," or "our"), operates the HairGo mobile application (the "App"), a marketplace connecting clients with independent hairstylists and beauty professionals in South Africa. This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information.</p>
 
@@ -75,12 +75,13 @@
 <ul>
   <li>Client physical addresses, provided when booking a service, so stylists can travel to the correct location</li>
   <li>Device location, where permitted by you, to support navigation and address autocomplete features</li>
-  <li><strong>Background location (stylists only):</strong> while a stylist is travelling to a confirmed appointment, we collect location in the background to share the stylist's live arrival time (ETA) with the client. Collection begins when the stylist starts the trip and stops when they mark arrival. You can disable location access in your device settings, though live ETA will not function without it.</li>
+  <li><strong>Trip arrival time (stylists only):</strong> while a stylist is travelling to a confirmed appointment and has the appointment screen open, the app uses the stylist's device location to estimate their arrival time (ETA). Only the estimated arrival time and trip status are shared with the client; the stylist's location itself is never shared with clients, and location is not collected in the background. You can disable location access in your device settings, though the arrival estimate will not function without it.</li>
 </ul>
 
 <h3>Payment Information</h3>
 <ul>
   <li>Payment card details are collected and processed directly by Paystack, our payment processor. HairGo does not store your full card number.</li>
+  <li>If you pay by bank transfer (EFT), you pay from your own bank. We use the amount, payment reference and any details shown on the payment we receive to match it to your booking.</li>
   <li>Stylist bank account details (bank name, account holder name, account number, account type and branch code), collected to enable payouts for completed bookings</li>
 </ul>
 
@@ -95,6 +96,7 @@
 <ul>
   <li>Device push notification tokens, used to send you booking updates and alerts</li>
   <li>General device and app usage information for troubleshooting and improving the App</li>
+  <li>Crash and error reports, including the device model, operating system, app version, device state at the time of the problem, technical details of the error, an installation identifier, your HairGo account ID and your role (client or stylist). We do not deliberately add your name, email address or phone number to these reports.</li>
 </ul>
 
 <h2>2. How We Use Your Information</h2>
@@ -109,7 +111,9 @@
   <li>Send booking confirmations, updates, and important notifications</li>
   <li>Provide customer support</li>
   <li>Investigate and resolve disputes between clients and stylists</li>
+  <li>Detect, diagnose and fix crashes and errors</li>
   <li>Improve and maintain the App's functionality and security</li>
+  <li>Keep a record of booking activity to help resolve disputes and respond to payment chargebacks</li>
   <li>Comply with legal obligations</li>
 </ul>
 
@@ -120,13 +124,16 @@
   <li><strong>Other users:</strong> When you book a service, relevant details (such as your name, address, and phone number) are shared with the stylist you've booked, and vice versa, so the service can be delivered.</li>
   <li><strong>Smile Identity:</strong> Stylist identity details — including the ID number, name, identity document photo, and verification selfie — are shared with Smile Identity to perform identity verification, facial biometric matching, and liveness checks.</li>
   <li><strong>Paystack:</strong> Payment information is shared with Paystack to process transactions securely.</li>
-  <li><strong>Service providers:</strong> We use Firebase (Google) for authentication, data storage, and push notifications, and Expo to deliver push notifications.</li>
+  <li><strong>Service providers:</strong> We use Firebase (Google) for authentication, data storage, push notifications and crash reporting (Firebase Crashlytics), and Expo to deliver push notifications.</li>
+  <li><strong>Google Places:</strong> Address text you type, and the place you select, are sent to Google to suggest and look up addresses.</li>
+  <li><strong>Route estimates:</strong> While a stylist is travelling to an appointment, the stylist's current location and the appointment location are sent as map coordinates to the OSRM routing service (router.project-osrm.org) to estimate distance and arrival time.</li>
+  <li><strong>UI Avatars:</strong> A stylist's name may be sent to ui-avatars.com to create a placeholder profile image in a client's bookings.</li>
   <li><strong>Legal requirements:</strong> We may disclose information where required by law or to protect the safety of our users.</li>
 </ul>
 
 <h2>4. Data Storage and International Transfers</h2>
 
-<p>Your information is stored using Firebase, a service provided by Google, which may process and store data outside of South Africa. By using the App, you acknowledge that your information may be transferred to and processed in countries outside South Africa, where data protection laws may differ. We take reasonable steps to ensure your information remains protected in accordance with this Policy and applicable law, including South Africa's Protection of Personal Information Act (POPIA).</p>
+<p>Your information is stored using Firebase, a service provided by Google, which may process and store data outside of South Africa. The other service providers named in Section 3 may also process data outside South Africa. By using the App, you acknowledge that your information may be transferred to and processed in countries outside South Africa, where data protection laws may differ. We take reasonable steps to ensure your information remains protected in accordance with this Policy and applicable law, including South Africa's Protection of Personal Information Act (POPIA).</p>
 
 <h2>5. Identity Verification Details</h2>
 
@@ -134,7 +141,7 @@
 
 <h2>6. Data Retention</h2>
 
-<p>We retain your personal information for as long as your account is active, or as needed to provide you services, comply with our legal obligations, resolve disputes, and enforce our agreements. If you close your account, we may retain certain information as required by law or for legitimate business purposes, such as fraud prevention and financial record-keeping. Funds for a booking are held from payment until three hours after the stylist marks the appointment complete (the dispute window), after which, absent a dispute, payout may be released.</p>
+<p>We retain your personal information for as long as your account is active, or as needed to provide you services, comply with our legal obligations, resolve disputes, and enforce our agreements. If you close your account, we may retain certain information as required by law or for legitimate business purposes, such as fraud prevention and financial record-keeping. This includes booking, payment, dispute and job-history records, which can contain names, service addresses, appointment details and related messages or reviews. We keep these records for at least 18 months after the booking so we can resolve disputes and respond to chargebacks, and longer where the law requires it. For example, tax records are generally kept for five years and company accounting records for about seven years, or longer during an audit, investigation or other legal matter. Funds for a booking are held from payment until three hours after the stylist marks the appointment complete (the dispute window), after which, absent a dispute, payout may be released.</p>
 
 <h2>7. Your Rights and Account Deletion</h2>
 
@@ -147,7 +154,9 @@
   <li>Withdraw consent where processing is based on consent</li>
 </ul>
 
-<p>You can delete your account directly in the App at any time under <strong>Profile &rarr; Delete account</strong>. This removes your login and personal profile. Records we are legally required to retain (for example, completed-transaction and dispute records) are anonymised rather than erased. You may also exercise any of these rights by contacting us using the details below.</p>
+<p>You can delete your account directly in the App at any time under <strong>Profile &rarr; Delete account</strong>. This removes your login and clears your personal profile. It does not remove the booking, payment, dispute and job-history records described in Section 6, or copies of your details held in another user's bookings or messages. You may also exercise any of these rights by contacting us using the details below.</p>
+
+<p>If you believe we have not handled your personal information properly, you may also lodge a complaint with South Africa's Information Regulator (<a href="https://inforegulator.org.za">inforegulator.org.za</a>).</p>
 
 <h2>8. Security</h2>
 
