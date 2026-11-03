@@ -74,6 +74,7 @@
 <h3>Location Information</h3>
 <ul>
   <li>Client physical addresses, provided when booking a service, so stylists can travel to the correct location</li>
+  <li>Stylist suburb and city, shown on the stylist's profile so clients can find stylists near them. Stylists should not enter a street or home address in these fields.</li>
   <li>Device location, where permitted by you, to support navigation and address autocomplete features</li>
   <li><strong>Trip arrival time (stylists only):</strong> while a stylist is travelling to a confirmed appointment and has the appointment screen open, the app uses the stylist's device location to estimate their arrival time (ETA). Only the estimated arrival time and trip status are shared with the client; the stylist's location itself is never shared with clients, and location is not collected in the background. You can disable location access in your device settings, though the arrival estimate will not function without it.</li>
 </ul>
@@ -121,7 +122,8 @@
 
 <p>We do not sell your personal information. We share information only as necessary to operate the App:</p>
 <ul>
-  <li><strong>Other users:</strong> When you book a service, relevant details (such as your name, address, and phone number) are shared with the stylist you've booked, and vice versa, so the service can be delivered.</li>
+  <li><strong>Stylists you book:</strong> When you book a service, your name, service address and phone number are shared with that stylist so they can travel to you and contact you about the appointment.</li>
+  <li><strong>Clients using the App:</strong> Stylist profiles show clients the stylist's name, photo, services, about text, ratings and reviews, online status, and suburb and city. The App does not show clients a stylist's home address, phone number or email address. Clients and stylists can message each other in the in-app chat.</li>
   <li><strong>Smile Identity:</strong> Stylist identity details — including the ID number, name, identity document photo, and verification selfie — are shared with Smile Identity to perform identity verification, facial biometric matching, and liveness checks.</li>
   <li><strong>Paystack:</strong> Payment information is shared with Paystack to process transactions securely.</li>
   <li><strong>Service providers:</strong> We use Firebase (Google) for authentication, data storage, push notifications and crash reporting (Firebase Crashlytics), and Expo to deliver push notifications.</li>
