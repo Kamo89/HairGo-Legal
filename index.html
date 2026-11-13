@@ -211,6 +211,20 @@
     .fine { color: var(--muted); font-size: .95rem; margin-top: 1rem; }
     @media (max-width: 860px) { .stylists-panel { grid-template-columns: 1fr; } }
 
+    /* Stylist perks with a short description */
+    .perks li span { color: var(--muted); }
+    .perks li b { color: var(--ink); font-weight: 600; }
+
+    /* FAQ */
+    .faq { margin-top: 2.5rem; max-width: 52rem; border-top: 1px solid var(--line); }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary { list-style: none; cursor: pointer; padding: 1.3rem 2.5rem 1.3rem 0; position: relative; font: 600 1.15rem/1.35 var(--display); }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; position: absolute; right: .25rem; top: 50%; transform: translateY(-50%); width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--mint); color: var(--forest); display: grid; place-items: center; font-size: 1.2rem; transition: transform .3s var(--ease); }
+    .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .faq .answer { color: var(--muted); padding: 0 2.5rem 1.4rem 0; max-width: 46rem; }
+    .faq .answer a { color: var(--forest); }
+
     /* Closing */
     .closing { background: var(--ink); color: #fff; border-radius: 2rem; padding: clamp(2.5rem, 6vw, 5rem); text-align: center; position: relative; overflow: hidden; }
     .closing::before { content: ""; position: absolute; inset: -40%; background: conic-gradient(from 0deg, transparent 0 70%, rgba(209,155,23,.18) 80%, transparent 90%); animation: spin 14s linear infinite; }
@@ -232,6 +246,10 @@
     .foot-links a:hover { color: var(--ink); }
     .legal { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; font-size: .88rem; }
     .signature .sig-name { color: var(--forest); font-weight: 600; }
+    .socials { display: flex; gap: .6rem; list-style: none; margin-top: 1.1rem; }
+    .socials a { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1px solid var(--line); color: var(--forest); transition: border-color .3s, transform .3s var(--ease); }
+    .socials a:hover { border-color: var(--forest); transform: translateY(-2px); }
+    .socials svg { width: 1.15rem; height: 1.15rem; fill: currentColor; }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -254,6 +272,7 @@
         <li><a href="#how">How it works</a></li>
         <li><a href="#trust">Safety</a></li>
         <li><a href="#stylists">For stylists</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a class="btn btn-primary" href="https://instagram.com/hairgo_za" target="_blank" rel="noopener">Follow us</a></li>
       </ul>
     </div>
@@ -268,7 +287,7 @@
             <span class="mask"><span>The salon</span></span>
             <span class="mask"><span class="soft">comes to <span class="underline">you.<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 50 4, 120 4, 197 10" /></svg></span></span></span>
           </h1>
-          <p class="lead fade-in d1">Book trusted hair and beauty professionals who come to your home, office or venue. Pay in the app, and your money is held until the job is done.</p>
+          <p class="lead fade-in d1">Book trusted hair and beauty professionals who come to your home, office or venue. Your card is only charged after your appointment, once you've had time to raise a problem.</p>
           <div class="hero-cta fade-in d2">
             <a class="btn btn-primary" href="https://ig.me/m/hairgo_za" target="_blank" rel="noopener"><span class="dot"></span>Join as a stylist</a>
             <a class="btn btn-quiet" href="#how">See how it works</a>
@@ -294,7 +313,7 @@
                 <div class="notif"><img src="assets/icon-192.png" alt="" /><div><div class="top"><b>Your stylist is on the way</b><time>19:04</time></div><span>Estimated arrival: <span id="eta">15</span> minutes.</span></div></div>
                 <div class="notif"><img src="assets/icon-192.png" alt="" /><div><div class="top"><b>Appointment complete</b><time>now</time></div><span>Your Hair Service is done. You can now leave a review.</span></div></div>
               </div>
-              <div class="eta"><span class="live"></span>Payment held until the job is done</div>
+              <div class="eta"><span class="live"></span>Charged only after the job is done</div>
             </div>
           </div>
         </div>
@@ -318,7 +337,7 @@
           <div class="progress" aria-hidden="true"></div>
           <li><span class="num">1</span><h3>Find a pro</h3><p>Browse stylists near you by service and area, and look through their work.</p></li>
           <li><span class="num" style="--d:.35s">2</span><h3>Chat and agree</h3><p>Message them and agree on the service, date, time and price.</p></li>
-          <li><span class="num" style="--d:.7s">3</span><h3>Pay in the app</h3><p>Pay securely through Paystack. HairGo holds the money until the job is done.</p></li>
+          <li><span class="num" style="--d:.7s">3</span><h3>Pay in the app</h3><p>Save your card securely with Paystack. You're only charged after your appointment, once you've had time to raise a problem.</p></li>
           <li><span class="num" style="--d:1.05s">4</span><h3>Get styled</h3><p>Follow your stylist's arrival time, then leave a review when you're done.</p></li>
         </ol>
       </div>
@@ -328,23 +347,23 @@
       <div class="wrap">
         <div class="section-head reveal">
           <h2>Safe on both sides of the door</h2>
-          <p class="lead">A stranger coming to your home, or going to a client's, should feel safe.</p>
+          <p class="lead">Letting someone into your home, or walking into a client's, should feel safe. That's built into how HairGo works.</p>
         </div>
         <div class="trust">
           <article class="tcard reveal">
             <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#E8F0EB"/><path d="M13 20.5l4.5 4.5L27 15.5" fill="none" stroke="#1D5542" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <h3>Every stylist is checked</h3>
-            <p>Stylists are reviewed and approved by HairGo before they can take bookings.</p>
+            <p>Every stylist is reviewed and approved by HairGo before their profile goes live and before they can take bookings.</p>
           </article>
           <article class="tcard reveal" style="--d:.12s">
             <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#E8F0EB"/><rect x="13" y="18" width="14" height="10" rx="2.5" fill="none" stroke="#1D5542" stroke-width="2.4"/><path d="M16 18v-3a4 4 0 018 0v3" fill="none" stroke="#1D5542" stroke-width="2.4"/><circle cx="20" cy="23" r="1.6" fill="#D19B17"/></svg>
-            <h3>Your payment is protected</h3>
-            <p>Money is held after you pay and only released once the job is complete, with time to raise a problem.</p>
+            <h3>Secure in-app payments</h3>
+            <p>Bookings and payments stay inside the app, so there's a clear record for both of you and no cash changes hands at the door.</p>
           </article>
           <article class="tcard reveal" style="--d:.24s">
             <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#E8F0EB"/><path d="M12 15.5a3 3 0 013-3h10a3 3 0 013 3v6a3 3 0 01-3 3h-6l-4.5 3.5v-3.5A3 3 0 0112 21.5z" fill="none" stroke="#1D5542" stroke-width="2.4" stroke-linejoin="round"/></svg>
-            <h3>Help when something goes wrong</h3>
-            <p>Either side can raise a dispute. We review it, and the money stays held until it's resolved.</p>
+            <h3>Help if something goes wrong</h3>
+            <p>Clients and stylists can raise a concern about a booking in the app, and our team will look into it.</p>
           </article>
         </div>
       </div>
@@ -355,12 +374,13 @@
         <div class="stylists-panel reveal">
           <div>
             <h2>For stylists: your business, minus the chasing</h2>
-            <p class="lead">No more "I'll pay you Friday." Clients pay up front, people nearby find you, and you set your own prices, area and hours.</p>
+            <p class="lead">Spend less time chasing DMs and payments, and more time doing hair. HairGo brings clients to you.</p>
             <ul class="perks">
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Clients pay before you arrive</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Accept or decline every request</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your schedule, chats and earnings in one place</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Paid to your bank account after each job</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Set your own prices and hours.</b> You decide what you charge, when you work and how far you'll travel.</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Get bookings near you.</b> Clients in your area find you in the app and book straight into your schedule.</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Simple commission.</b> <strong>0% commission until 31&nbsp;December&nbsp;2026</strong>, then 10% only on completed bookings. If you don't earn, we don't either.</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>No monthly fees.</b> No subscriptions and no sign-up costs. Join, get approved and start taking bookings.</span></li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#E8F0EB"/><path d="M6 10.3l2.6 2.6L14 7.5" fill="none" stroke="#1D5542" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Paid directly.</b> Your share goes straight to your bank account through our payment partner, Paystack, after each job.</span></li>
             </ul>
             <div class="hero-cta">
               <a class="btn btn-primary" href="https://ig.me/m/hairgo_za" target="_blank" rel="noopener"><span class="dot"></span>Message us STYLIST</a>
@@ -375,8 +395,46 @@
               <div><span>HairGo commission (10%)</span><span>R75</span></div>
               <div class="yours"><span>You get</span><span>R675</span></div>
             </div>
-            <p class="fine">No subscriptions, no monthly fees. Commission only on completed jobs.</p>
+            <p class="fine">Example at the standard 10% commission, which starts on 1 January 2027. Until then, our launch offer is 0% commission. No subscriptions or monthly fees, and commission only on completed jobs and late cancellations. Full details are in our <a href="terms-of-service.html">Terms of Service</a>.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2>Questions, answered</h2>
+        </div>
+        <div class="faq reveal">
+          <details>
+            <summary>When does HairGo launch?</summary>
+            <div class="answer"><p>Soon. We're getting stylists approved and ready first. Follow us on Instagram, TikTok or Facebook to be among the first to know when you can book.</p></div>
+          </details>
+          <details>
+            <summary>Which areas will HairGo cover?</summary>
+            <div class="answer"><p>We're starting in Alberton, then growing across Gauteng and the rest of South Africa. Somewhere else? <a href="https://ig.me/m/hairgo_za" target="_blank" rel="noopener">Message us your area</a> so we know where to go next.</p></div>
+          </details>
+          <details>
+            <summary>How do payments work?</summary>
+            <div class="answer"><p>Your card is only charged after your appointment, once you've had time to raise a problem. Stylists are paid directly through our payment partner, Paystack. There's no cash to handle at the door.</p></div>
+          </details>
+          <details>
+            <summary>How much will a booking cost?</summary>
+            <div class="answer"><p>Each stylist sets their own prices. You'll see the price in the app before you confirm a booking.</p></div>
+          </details>
+          <details>
+            <summary>How do I join as a stylist?</summary>
+            <div class="answer"><p><a href="https://ig.me/m/hairgo_za" target="_blank" rel="noopener">Message us STYLIST on Instagram</a> or <a href="mailto:support@hairgohome.co.za">email us</a>. We'll help you download the app, set up your profile and get approved. Once you're approved, clients can start booking you.</p></div>
+          </details>
+          <details>
+            <summary>What does HairGo charge stylists?</summary>
+            <div class="answer"><p>No monthly or sign-up fees. HairGo takes a commission only on completed bookings: 0% on bookings paid up to 31 December 2026, then 10%. See our <a href="terms-of-service.html">Terms of Service</a> for the details.</p></div>
+          </details>
+          <details>
+            <summary>How are stylists checked?</summary>
+            <div class="answer"><p>Every stylist is reviewed and approved by HairGo before they can take bookings. You can also look at their work and reviews in the app before you book.</p></div>
+          </details>
         </div>
       </div>
     </section>
@@ -401,11 +459,16 @@
         <div>
           <a class="brand" href="#top"><img src="assets/icon-192.png" alt="" width="34" height="34" />HairGo</a>
           <p>Hair and beauty professionals who come to you. HAIRGO (PTY) LTD, a registered South African company.</p>
+          <ul class="socials">
+            <li><a href="https://www.instagram.com/hairgo_za/" target="_blank" rel="noopener" aria-label="HairGo on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.9-8.9a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 2.5c-2.6 0-2.9 0-3.9.1-3.5.2-5.4 2.1-5.6 5.6-.1 1-.1 1.3-.1 3.8s0 2.9.1 3.9c.2 3.5 2.1 5.4 5.6 5.6 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.5-.2 5.4-2.1 5.6-5.6.1-1 .1-1.3.1-3.9s0-2.8-.1-3.8c-.2-3.5-2.1-5.4-5.6-5.6-1-.1-1.3-.1-3.9-.1zm0 1.7c2.5 0 2.8 0 3.8.1 2.5.1 3.7 1.3 3.8 3.8.1 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.5-1.3 3.7-3.8 3.8-1 .1-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.5-.1-3.7-1.3-3.8-3.8-.1-1-.1-1.3-.1-3.8s0-2.8.1-3.8c.1-2.5 1.3-3.7 3.8-3.8 1-.1 1.3-.1 3.8-.1z"/></svg></a></li>
+            <li><a href="https://www.tiktok.com/@hairgo_za" target="_blank" rel="noopener" aria-label="HairGo on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2.5c.4 2.4 1.9 4 4.3 4.2v3.4c-1.6.1-3.1-.4-4.3-1.3v6.4a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1V13a2.4 2.4 0 1 0 1.6 2.3V2.5z"/></svg></a></li>
+            <li><a href="https://www.facebook.com/hairgo_za" target="_blank" rel="noopener" aria-label="HairGo on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.8 21.5v-8.2h2.8l.4-3.3h-3.2V8c0-.9.3-1.6 1.6-1.6H17V3.5c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.5v3.3h2.8v8.2z"/></svg></a></li>
+          </ul>
         </div>
         <ul class="foot-links">
           <li><a href="#how">How it works</a></li>
           <li><a href="#stylists">For stylists</a></li>
-          <li><a href="https://instagram.com/hairgo_za" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="terms-of-service.html">Terms of Service</a></li>
           <li><a href="cancellation-refund.html">Cancellation, Refund &amp; Delivery</a></li>
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
