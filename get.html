@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get HairGo</title>
+  <meta name="description" content="Download HairGo: book verified hair and beauty professionals who come to you. On iPhone now, Android early access." />
+  <meta property="og:title" content="Get HairGo" />
+  <meta property="og:description" content="Verified hair and beauty pros who come to you. On iPhone now, Android early access." />
+  <meta property="og:image" content="https://hairgohome.co.za/assets/hairgo-logo.png" />
+  <meta property="og:url" content="https://hairgohome.co.za/get" />
+  <meta name="apple-itunes-app" content="app-id=6829202620" />
+  <meta name="theme-color" content="#F5F7F5" />
+  <link rel="canonical" href="https://hairgohome.co.za/get" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F7F5;
+      --surface: #FFFFFF;
+      --line: #DFE7E2;
+      --ink: #13261E;
+      --muted: #5A6B63;
+      --forest: #1D5542;
+      --mint: #E8F0EB;
+      --mustard: #D19B17;
+      --danger: #B42318;
+      --display: "Bricolage Grotesque", system-ui, sans-serif;
+      --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--body); font-size: 1.0625rem; line-height: 1.55; color: var(--ink); background: var(--bg); min-height: 100vh; overflow-x: hidden; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--forest); outline-offset: 3px; border-radius: 8px; }
+    .wrap { width: min(560px, 100% - 2rem); margin-inline: auto; }
+
+    body::before {
+      content: ""; position: fixed; width: 44rem; height: 44rem; right: -20rem; top: -22rem; border-radius: 50%;
+      background: radial-gradient(closest-side, rgba(29,85,66,.11), transparent 70%); pointer-events: none; z-index: -1;
+    }
+
+    header { padding: 1.4rem 0 0; }
+    .brand { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; font: 700 1.2rem var(--display); letter-spacing: -0.01em; }
+    .brand img { width: 36px; height: 36px; border-radius: 50%; }
+
+    .intro { padding: 2.6rem 0 1.6rem; }
+    h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2.3rem, 9vw, 3.2rem); line-height: 1.02; letter-spacing: -0.03em; }
+    h1 em { font-style: normal; color: var(--forest); }
+    .lead { color: var(--muted); margin-top: .9rem; font-size: 1.08rem; max-width: 30rem; }
+
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 1.35rem; margin-top: 1rem; box-shadow: 0 18px 40px -30px rgba(19,38,30,.35); }
+    .card.is-you { border-color: var(--forest); box-shadow: 0 0 0 3px var(--mint), 0 18px 40px -30px rgba(19,38,30,.45); }
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+    .card h2 { font: 600 1.3rem/1.15 var(--display); letter-spacing: -0.015em; }
+    .tag { font-size: .78rem; font-weight: 600; padding: .3rem .65rem; border-radius: 999px; background: var(--mint); color: var(--forest); white-space: nowrap; }
+    .tag.soon { background: #FBF3DF; color: #7A5A0B; }
+    .card p { color: var(--muted); margin-top: .45rem; font-size: .98rem; }
+
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: .55rem; width: 100%;
+      font: 600 1.02rem/1 var(--body); text-decoration: none; cursor: pointer; margin-top: 1.05rem;
+      padding: 1.05rem 1.3rem; border-radius: 999px; border: 1px solid transparent;
+      background: var(--ink); color: #fff; transition: transform .25s var(--ease), background-color .2s, box-shadow .25s var(--ease);
+    }
+    .btn:hover { background: var(--forest); transform: translateY(-1px); box-shadow: 0 10px 24px -12px rgba(29,85,66,.6); }
+    .btn:disabled { opacity: .55; cursor: default; transform: none; box-shadow: none; }
+    .btn-quiet { background: var(--surface); border-color: var(--line); color: var(--ink); }
+    .btn-quiet:hover { background: var(--surface); border-color: var(--forest); }
+    .btn .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--mustard); }
+
+    ol.steps { list-style: none; counter-reset: s; margin-top: 1rem; display: grid; gap: .7rem; }
+    ol.steps li { counter-increment: s; display: grid; grid-template-columns: 1.9rem 1fr; gap: .7rem; align-items: start; font-size: .98rem; }
+    ol.steps li::before { content: counter(s); display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--mint); color: var(--forest); font-weight: 700; font-size: .9rem; }
+    ol.steps .btn { margin-top: .55rem; padding: .85rem 1rem; font-size: .96rem; }
+
+    form { margin-top: 1rem; display: grid; gap: .85rem; }
+    label.field { display: grid; gap: .35rem; font-size: .9rem; font-weight: 600; }
+    label.field span.opt { font-weight: 400; color: var(--muted); }
+    input[type=email], input[type=text] {
+      font: 400 1rem var(--body); color: var(--ink); background: var(--bg);
+      border: 1px solid var(--line); border-radius: 14px; padding: .85rem .95rem; width: 100%;
+    }
+    input:focus { outline: none; border-color: var(--forest); box-shadow: 0 0 0 3px var(--mint); }
+    fieldset { border: 0; display: grid; gap: .35rem; }
+    legend { font-size: .9rem; font-weight: 600; margin-bottom: .35rem; }
+    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label { display: block; text-align: center; padding: .8rem .5rem; border-radius: 14px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; font-weight: 600; font-size: .95rem; transition: border-color .2s, background-color .2s; }
+    .seg input:checked + label { border-color: var(--forest); background: var(--mint); color: var(--forest); }
+    .seg input:focus-visible + label { outline: 2px solid var(--forest); outline-offset: 2px; }
+    .consent { display: grid; grid-template-columns: 1.25rem 1fr; gap: .65rem; align-items: start; font-size: .9rem; color: var(--muted); cursor: pointer; }
+    .consent input { width: 1.2rem; height: 1.2rem; margin-top: .15rem; accent-color: var(--forest); }
+    .consent a { color: var(--forest); }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .msg { font-size: .93rem; font-weight: 600; min-height: 1.2em; }
+    .msg.err { color: var(--danger); }
+    .done { display: none; text-align: center; padding: 1.2rem .5rem .4rem; }
+    .done .tick { width: 3rem; height: 3rem; border-radius: 50%; background: var(--mint); color: var(--forest); display: grid; place-items: center; margin: 0 auto .8rem; font-size: 1.4rem; font-weight: 700; }
+    .done h3 { font: 600 1.25rem var(--display); }
+    .done p { margin-top: .35rem; }
+
+    .points { list-style: none; display: grid; gap: .55rem; margin: 1.8rem 0 0; padding: 0 .2rem; }
+    .points li { display: grid; grid-template-columns: .55rem 1fr; gap: .8rem; align-items: baseline; color: var(--muted); font-size: .97rem; }
+    .points li::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--mustard); transform: translateY(-.1rem); }
+    .points strong { color: var(--ink); font-weight: 600; }
+
+    footer { padding: 2.4rem 0 2.6rem; color: var(--muted); font-size: .88rem; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    .preview-note { position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%); background: var(--ink); color: #fff; font-size: .8rem; padding: .45rem .8rem; border-radius: 999px; z-index: 5; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="/"><img src="assets/hairgo-logo.png" alt="" width="36" height="36" />HairGo</a>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>The salon <em>comes to you.</em></h1>
+      <p class="lead">Book verified hair and beauty professionals who come to your home. Chat, agree on a price, and pay by card in the app.</p>
+    </section>
+
+    <section class="card" id="ios-card" aria-labelledby="ios-title">
+      <div class="card-head">
+        <h2 id="ios-title">iPhone</h2>
+        <span class="tag">Available now</span>
+      </div>
+      <p>Free on the App Store in South Africa.</p>
+      <a class="btn" id="ios-btn" href="https://apps.apple.com/app/hairgo/id6829202620"><span class="dot"></span>Download on the App Store</a>
+    </section>
+
+    <section class="card" id="android-card" aria-labelledby="android-title">
+      <div class="card-head">
+        <h2 id="android-title">Android</h2>
+        <span class="tag soon" id="android-tag">Coming soon</span>
+      </div>
+
+      <!-- Shown once PLAY_JOIN_URL is set below -->
+      <div id="android-join" hidden>
+        <p>Early access is open. It takes two quick steps with your Google account.</p>
+        <ol class="steps">
+          <li><div>Join the early-access group.<a class="btn btn-quiet" id="group-btn" href="https://groups.google.com/g/hairgo-early-access" target="_blank" rel="noopener">Join the group</a></div></li>
+          <li><div>Accept the invite and install HairGo from Google Play.<a class="btn" id="play-btn" href="#" rel="noopener"><span class="dot"></span>Get early access</a></div></li>
+        </ol>
+        <p style="margin-top:1rem">Rather wait for the full release? <a href="#notify" id="show-notify" style="color:var(--forest)">Get an email instead</a>.</p>
+      </div>
+
+      <div id="notify">
+        <p id="notify-intro">HairGo for Android is in final testing with Google. Leave your email and we'll tell you the day it's ready.</p>
+        <form id="waitlist" novalidate>
+          <fieldset>
+            <legend>I want to</legend>
+            <div class="seg">
+              <input type="radio" name="role" id="role-client" value="client" checked /><label for="role-client">Book a stylist</label>
+              <input type="radio" name="role" id="role-stylist" value="stylist" /><label for="role-stylist">Get clients</label>
+            </div>
+          </fieldset>
+          <label class="field">Email
+            <input type="email" name="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" />
+          </label>
+          <label class="field"><span>First name <span class="opt">(optional)</span></span>
+            <input type="text" name="name" autocomplete="given-name" maxlength="60" />
+          </label>
+          <div class="hp" aria-hidden="true"><label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label></div>
+          <label class="consent">
+            <input type="checkbox" name="consent" required />
+            <span>I agree that HairGo may email me when the HairGo Android app is available. I can ask to be removed at any time. <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
+          </label>
+          <p class="msg" id="form-msg" role="status" aria-live="polite"></p>
+          <button class="btn" type="submit" id="submit-btn" style="margin-top:0">Notify me</button>
+        </form>
+        <div class="done" id="done" role="status">
+          <div class="tick" aria-hidden="true">✓</div>
+          <h3 id="done-title">You're on the list</h3>
+          <p id="done-text">We'll email you as soon as HairGo is on Google Play.</p>
+        </div>
+      </div>
+    </section>
+
+    <ul class="points">
+      <li><span><strong>Verified professionals.</strong> Every stylist confirms their identity before taking bookings.</span></li>
+      <li><span><strong>20% deposit, the rest after.</strong> The deposit is charged 24 hours before, and you can cancel free until then.</span></li>
+      <li><span><strong>Stylists:</strong> 0% HairGo commission until 31 December 2026. You pay only the card fee.</span></li>
+    </ul>
+  </main>
+
+  <footer class="wrap">
+    <span>&copy; 2026 HairGo (Pty) Ltd</span>
+    <a href="/">Home</a>
+    <a href="terms-of-service.html">Terms</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="mailto:support@hairgohome.co.za">support@hairgohome.co.za</a>
+  </footer>
+
+  <script>
+    // ── Settings ────────────────────────────────────────────────────────────
+    // Paste the Play Console "Join on Android" link here once Google approves
+    // the Early access track. Until then Android visitors see the email form.
+    const PLAY_JOIN_URL = "";
+    const APP_STORE_URL = "https://apps.apple.com/app/hairgo/id6829202620";
+    const API = "https://us-central1-hairgo-d516b.cloudfunctions.net/earlyAccess";
+    // ────────────────────────────────────────────────────────────────────────
+
+    const params = new URLSearchParams(location.search);
+    const src = (params.get("src") || "direct").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 32) || "direct";
+    const ua = navigator.userAgent || "";
+    const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const isAndroid = /Android/i.test(ua);
+    const platform = isIOS ? "ios" : isAndroid ? "android" : "other";
+    // Off the live site (a local preview) nothing is sent and nobody is redirected.
+    const live = /(^|\.)hairgohome\.co\.za$/.test(location.hostname);
+
+    if (!live) {
+      const note = document.createElement("div");
+      note.className = "preview-note";
+      note.textContent = `Preview · seen as ${platform} · src=${src} · nothing is sent`;
+      document.body.appendChild(note);
+    }
+
+    function send(path, body) {
+      // text/plain keeps it a "simple" request: no CORS preflight.
+      return fetch(API + path, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(body), keepalive: true });
+    }
+
+    // Count the visit, then send iPhones straight to the App Store.
+    if (live) {
+      const payload = JSON.stringify({ src, platform });
+      const beaconed = navigator.sendBeacon && navigator.sendBeacon(API + "/visit", new Blob([payload], { type: "text/plain" }));
+      if (!beaconed) send("/visit", { src, platform }).catch(() => {});
+    }
+    if (isIOS) {
+      document.getElementById("ios-card").classList.add("is-you");
+      if (live && params.get("stay") !== "1") setTimeout(() => location.replace(APP_STORE_URL), 150);
+    }
+
+    // Android: early access buttons once the link exists, otherwise the form.
+    const joinBox = document.getElementById("android-join");
+    const notifyBox = document.getElementById("notify");
+    if (isAndroid) document.getElementById("android-card").classList.add("is-you");
+    if (PLAY_JOIN_URL) {
+      document.getElementById("play-btn").href = PLAY_JOIN_URL;
+      document.getElementById("android-tag").textContent = "Early access";
+      document.getElementById("android-tag").classList.remove("soon");
+      document.getElementById("notify-intro").textContent = "Leave your email and we'll tell you when HairGo is fully released on Google Play.";
+      joinBox.hidden = false;
+      notifyBox.hidden = true;
+      document.getElementById("show-notify").addEventListener("click", (e) => {
+        e.preventDefault();
+        notifyBox.hidden = false;
+        notifyBox.querySelector("input[type=email]").focus();
+      });
+    }
+    // On an Android phone, put the Android card first.
+    if (isAndroid) {
+      const ios = document.getElementById("ios-card");
+      ios.parentNode.insertBefore(document.getElementById("android-card"), ios);
+    }
+
+    // Waitlist form
+    const form = document.getElementById("waitlist");
+    const msg = document.getElementById("form-msg");
+    const btn = document.getElementById("submit-btn");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msg.className = "msg"; msg.textContent = "";
+      const data = new FormData(form);
+      const body = {
+        email: String(data.get("email") || "").trim(),
+        name: String(data.get("name") || "").trim(),
+        role: data.get("role"),
+        consent: data.get("consent") === "on",
+        company: String(data.get("company") || ""),
+        src, platform,
+      };
+      if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(body.email)) return fail("Please enter a valid email address.");
+      if (!body.consent) return fail("Please tick the box so we're allowed to email you.");
+
+      btn.disabled = true; btn.textContent = "Adding you…";
+      try {
+        let result = { ok: true, already: false };
+        if (live) {
+          const res = await fetch(API + "/waitlist", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(body) });
+          result = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(result.error || "Something went wrong. Please try again.");
+        } else {
+          await new Promise((r) => setTimeout(r, 500));
+        }
+        form.style.display = "none";
+        document.getElementById("notify-intro").style.display = "none";
+        if (result.already) {
+          document.getElementById("done-title").textContent = "You're already on the list";
+          document.getElementById("done-text").textContent = "We'll email you as soon as it's ready.";
+        }
+        document.getElementById("done").style.display = "block";
+      } catch (err) {
+        fail(err.message || "Something went wrong. Please try again.");
+      } finally {
+        btn.disabled = false; btn.textContent = "Notify me";
+      }
+    });
+    function fail(text) { msg.className = "msg err"; msg.textContent = text; }
+  </script>
+</body>
+</html>
