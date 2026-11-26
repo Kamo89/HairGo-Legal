@@ -123,8 +123,8 @@
 
   <main class="wrap">
     <section class="intro">
-      <h1>The salon <em>comes to you.</em></h1>
-      <p class="lead">Book verified hair and beauty professionals who come to your home. Chat, agree on a price, and pay by card in the app.</p>
+      <h1 id="headline">The salon <em>comes to you.</em></h1>
+      <p class="lead" id="lead">Book verified hair and beauty professionals who come to your home. Chat, agree on a price, and pay by card in the app.</p>
     </section>
 
     <section class="card" id="ios-card" aria-labelledby="ios-title">
@@ -186,7 +186,7 @@
 
     <ul class="points">
       <li><span><strong>Verified professionals.</strong> Every stylist confirms their identity before taking bookings.</span></li>
-      <li><span><strong>20% deposit, the rest after.</strong> The deposit is charged 24 hours before, and you can cancel free until then.</span></li>
+      <li><span><strong>20% deposit, the rest after.</strong> The deposit is charged 24 hours before the appointment, or when the booking is confirmed if it's less than 24 hours away. Cancel more than 24 hours before and you pay nothing.</span></li>
       <li><span><strong>Stylists:</strong> 0% HairGo commission until 31 December 2026. You pay only the card fee.</span></li>
     </ul>
   </main>
@@ -214,13 +214,15 @@
     const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
     const isAndroid = /Android/i.test(ua);
     const platform = isIOS ? "ios" : isAndroid ? "android" : "other";
+    // ?role=stylist: a stylist ad. Anything else counts as no role.
+    const linkRole = ["client", "stylist"].includes(params.get("role")) ? params.get("role") : null;
     // Off the live site (a local preview) nothing is sent and nobody is redirected.
     const live = /(^|\.)hairgohome\.co\.za$/.test(location.hostname);
 
     if (!live) {
       const note = document.createElement("div");
       note.className = "preview-note";
-      note.textContent = `Preview · seen as ${platform} · src=${src} · nothing is sent`;
+      note.textContent = `Preview · ${platform} · src=${src}${linkRole ? " · role=" + linkRole : ""} · nothing is sent`;
       document.body.appendChild(note);
     }
 
@@ -231,13 +233,23 @@
 
     // Count the visit, then send iPhones straight to the App Store.
     if (live) {
-      const payload = JSON.stringify({ src, platform });
+      const payload = JSON.stringify({ src, platform, linkRole });
       const beaconed = navigator.sendBeacon && navigator.sendBeacon(API + "/visit", new Blob([payload], { type: "text/plain" }));
-      if (!beaconed) send("/visit", { src, platform }).catch(() => {});
+      if (!beaconed) send("/visit", { src, platform, linkRole }).catch(() => {});
     }
     if (isIOS) {
       document.getElementById("ios-card").classList.add("is-you");
       if (live && params.get("stay") !== "1") setTimeout(() => location.replace(APP_STORE_URL), 150);
+    }
+
+    // Stylist links: stylist intro and "Get clients" preselected.
+    if (linkRole === "stylist") {
+      const h = document.getElementById("headline");
+      h.textContent = "Get booked by clients ";
+      const em = document.createElement("em"); em.textContent = "near you."; h.appendChild(em);
+      document.getElementById("lead").textContent = "Set your own prices and hours. 0% HairGo commission until 31 December 2026; you pay only the card fee.";
+      document.getElementById("role-stylist").checked = true;
+      document.title = "Get HairGo for stylists";
     }
 
     // Android: early access buttons once the link exists, otherwise the form.
@@ -277,7 +289,7 @@
         role: data.get("role"),
         consent: data.get("consent") === "on",
         company: String(data.get("company") || ""),
-        src, platform,
+        src, platform, linkRole,
       };
       if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(body.email)) return fail("Please enter a valid email address.");
       if (!body.consent) return fail("Please tick the box so we're allowed to email you.");
