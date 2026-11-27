@@ -204,7 +204,10 @@
     // Paste the Play Console "Join on Android" link here once Google approves
     // the Early access track. Until then Android visitors see the email form.
     const PLAY_JOIN_URL = "";
-    const APP_STORE_URL = "https://apps.apple.com/app/hairgo/id6829202620";
+    // App Store Connect → Analytics → Campaigns → your provider token (the pt= number).
+    // When set, iPhone links carry pt and ct=<src>, so App Store Connect shows downloads per ad.
+    const APPLE_PROVIDER_TOKEN = "129714013";
+    const APP_STORE_BASE = "https://apps.apple.com/app/hairgo/id6829202620";
     const API = "https://us-central1-hairgo-d516b.cloudfunctions.net/earlyAccess";
     // ────────────────────────────────────────────────────────────────────────
 
@@ -214,6 +217,10 @@
     const isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
     const isAndroid = /Android/i.test(ua);
     const platform = isIOS ? "ios" : isAndroid ? "android" : "other";
+    const APP_STORE_URL = APPLE_PROVIDER_TOKEN
+      ? `${APP_STORE_BASE}?pt=${encodeURIComponent(APPLE_PROVIDER_TOKEN)}&ct=${encodeURIComponent(src)}&mt=8`
+      : APP_STORE_BASE;
+    document.getElementById("ios-btn").href = APP_STORE_URL;
     // ?role=stylist: a stylist ad. Anything else counts as no role.
     const linkRole = ["client", "stylist"].includes(params.get("role")) ? params.get("role") : null;
     // Off the live site (a local preview) nothing is sent and nobody is redirected.
